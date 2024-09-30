@@ -27,14 +27,6 @@ export default function CSV_EDITOR({
 	const [clickTimeout, setClickTimeout] = useState(null);
 
 	useEffect(() => {
-		setLocalData(data);
-	}, [data]);
-
-	useEffect(() => {
-		setLocalHeaders(headers);
-	}, [headers]);
-
-	useEffect(() => {
 		if (csvString) {
 			const [headers, ...rows] = csvString.trim().split('\n');
 			setLocalHeaders(headers.split(',').map(header => header.trim()));
@@ -143,12 +135,12 @@ export default function CSV_EDITOR({
 									{header}
 								</th>
 							))}
+							{editable && (
+								<button className="add-column" onClick={addColumn}>
+									+
+								</button>
+							)}
 						</tr>
-						{editable && (
-							<button className="add-column" onClick={addColumn}>
-								+
-							</button>
-						)}
 					</thead>
 					<tbody>
 						{localData.map((row, i) => (

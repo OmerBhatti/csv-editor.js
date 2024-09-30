@@ -23,7 +23,8 @@ export default function Modal({ open, data, setLocalData, headers, onDataChange,
 
 	const handleSave = () => {
         setError(null);
-        if (formData.length !== headers.length) {
+		const containsInvalidValue = formData.some(item => item === '' || item === undefined || item === null);
+        if (containsInvalidValue || formData.length !== headers.length) {
             setError('Please fill all the fields');
             return;
         }
