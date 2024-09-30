@@ -1,0 +1,10 @@
+{
+  "name": "csv-editor.js",
+  "version": "1.0.0",
+  "description": "A csv viewer/editor for react js",
+  "main": "index.jsx",
+  "repository": "https://github.com/OmerBhatti/csv-editor.js",
+  "author": "Omer Bhatti <omerbhatti34@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
