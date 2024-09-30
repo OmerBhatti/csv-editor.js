@@ -9,9 +9,18 @@ import './styles.css';
  * callbacks for when the data changes or when a file is uploaded.
  *
  */
-export default function CSV_EDITOR({ headers, data, headersStyle = {}, dataStyle = {}, ...props }) {
+export default function CSV_EDITOR({
+	csvString = '',
+	headers = [],
+	data = [],
+	headersStyle = {},
+	dataStyle = {},
+	editable = true,
+	...props
+}) {
 	const [localData, setLocalData] = useState(data);
 	const [localHeaders, setLocalHeaders] = useState(headers);
+	const [currentRow, setCurrentRow] = useState(null);
 
 	useEffect(() => {
 		setLocalData(data);
@@ -20,6 +29,14 @@ export default function CSV_EDITOR({ headers, data, headersStyle = {}, dataStyle
 	useEffect(() => {
 		setLocalHeaders(headers);
 	}, [headers]);
+
+    useEffect(() => {
+        if (csvString) {
+            const [headers, ...rows] = csvString.trim().split('\n');
+            setLocalHeaders(headers.split(',').map((header) => header.trim()));
+            setLocalData(rows.map((row) => row.split(',').map((cell) => cell.trim())));
+        }
+    }, [csvString]);
 
 	return (
 		<>
@@ -36,9 +53,13 @@ export default function CSV_EDITOR({ headers, data, headersStyle = {}, dataStyle
 					</thead>
 					<tbody>
 						{localData.map((row, i) => (
-							<tr key={i}>
+							<tr
+								key={i}
+								className={editable ? 'editable' : ''}
+								onClick={() => (editable ? setCurrentRow(i) : null)}
+							>
 								{row.map((cell, j) => (
-									<td style={dataStyle && dataStyle[headers[j]]} key={j}>
+									<td key={j} style={dataStyle && dataStyle[headers[j]]}>
 										{cell}
 									</td>
 								))}
