@@ -5,7 +5,6 @@
 	border-radius: 10px;
 }
 .csv-editor-table {
-	table-layout: fixed;
 	border-collapse: collapse;
 	background: white;
 	width: 100%;
@@ -78,9 +77,10 @@
 }
 
 .csv-editor-table button.add-row {
-    position: absolute;
+    position: sticky;
     bottom: 0px;
     left: 50%;
+	margin-bottom: 15px;
     transform: translate(-50%);
 	border: 1px solid #36304a;
     outline: none;

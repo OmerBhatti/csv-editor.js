@@ -27,6 +27,9 @@
 
 .csv-modal-content {
 	margin-top: 15px;
+	max-height: 600px;
+    overflow: scroll;
+    margin-bottom: 10px;
 }
 
 .csv-modal-input {
@@ -62,4 +65,9 @@
 .csv-modal-actions button:hover {
     background-color: #494164;
 	transition: all 0.3s ease;
+}
+
+.csv-modal-error {
+	color: red;
+	margin-top: 10px;
 }

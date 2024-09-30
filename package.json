@@ -1,6 +1,6 @@
 {
   "name": "csv-editor.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A csv viewer/editor for react js",
   "main": "index.jsx",
   "repository": "https://github.com/OmerBhatti/csv-editor.js",

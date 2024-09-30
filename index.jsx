@@ -1,70 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Modal from './modal';
 import './styles.css';
-import './modalStyles.css';
-
-function Modal({ open, data, setLocalData, headers, onDataChange, currentRow, setCurrentRow, onSuccess, onClose }) {
-	const [formData, setFormData] = useState([]);
-
-	useEffect(() => {
-		if (currentRow !== null && data && data[currentRow]) {
-			setFormData(data[currentRow]);
-		} else {
-			setFormData([]);
-		}
-	}, [currentRow, data]);
-
-	const handleInputChange = (e, index) => {
-		const { value } = e.target;
-		const updatedFormData = [...formData];
-		updatedFormData[index] = value;
-		setFormData(updatedFormData);
-	};
-
-	const handleSave = () => {
-		const updatedData = [...data];
-		if (currentRow !== null) {
-			updatedData[currentRow] = formData;
-		} else {
-			updatedData.push(formData);
-		}
-		setLocalData(updatedData);
-		onDataChange(updatedData);
-		onSuccess(formData);
-		handleClose();
-	};
-
-	// Handle close operation
-	const handleClose = () => {
-		setCurrentRow(null);
-		onClose();
-	};
-
-	if (!open) return null;
-
-	return (
-		<div className="csv-modal-overlay">
-			<div className="csv-modal-container">
-				<h3>{currentRow !== null ? 'Edit Row' : 'Add New Row'}</h3>
-				<div className="csv-modal-content">
-					{headers.map((header, index) => (
-						<div key={index} className="csv-modal-input">
-							<label>{header}:</label>
-							<input
-								type="text"
-								value={formData[index] || ''}
-								onChange={e => handleInputChange(e, index)}
-							/>
-						</div>
-					))}
-				</div>
-				<div className="csv-modal-actions">
-					<button onClick={handleSave}>Save</button>
-					<button onClick={handleClose}>Cancel</button>
-				</div>
-			</div>
-		</div>
-	);
-}
 
 /**
  * CSV_EDITOR Component
@@ -168,7 +104,7 @@ export default function CSV_EDITOR({
 			removeRow(index);
 		} else {
 			const timeout = setTimeout(() => {
-				if (index) {
+				if (index !== null) {
 					setCurrentRow(index);
 				}
 				setShowModal(true);
