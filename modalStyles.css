@@ -1,0 +1,65 @@
+
+.csv-modal-overlay {
+    font-family: 'Montserrat', sans-serif;
+	position: fixed;
+    z-index: 1000;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.csv-modal-container {
+	background-color: white;
+	padding: 20px;
+	border-radius: 8px;
+	min-width: 300px;
+}
+
+.csv-modal-container * {
+    margin: 0;
+    padding: 0;
+}
+
+.csv-modal-content {
+	margin-top: 15px;
+}
+
+.csv-modal-input {
+	margin-bottom: 10px;
+}
+
+.csv-modal-input input {
+    width: -webkit-fill-available;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.csv-modal-actions {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.csv-modal-actions button {
+	margin-left: 10px;
+    background-color: #36304a;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+	transition: all 0.3s ease;
+}
+
+.csv-modal-actions button:hover {
+    background-color: #494164;
+	transition: all 0.3s ease;
+}
