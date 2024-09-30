@@ -125,7 +125,6 @@ export default function CSV_EDITOR({
 				onDataChange={onDataChange}
 				currentRow={currentRow}
 				setCurrentRow={setCurrentRow}
-				onSuccess={row => console.log(row)}
 				onClose={() => {
 					setShowModal(false);
 					setCurrentRow(null);

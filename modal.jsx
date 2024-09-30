@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './modalStyles.css';
 
-export default function Modal({ open, data, setLocalData, headers, onDataChange, currentRow, setCurrentRow, onSuccess, onClose }) {
+export default function Modal({ open, data, setLocalData, headers, onDataChange, currentRow, setCurrentRow, onClose }) {
 	const [formData, setFormData] = useState([]);
     const [error, setError] = useState(null);
 
@@ -35,7 +35,6 @@ export default function Modal({ open, data, setLocalData, headers, onDataChange,
 		}
 		setLocalData(updatedData);
 		onDataChange(updatedData);
-		onSuccess(formData);
 		handleClose();
 	};
 
